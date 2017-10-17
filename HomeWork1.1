@@ -6,12 +6,18 @@
     var arr = [];
     var currentNumber = 2;
 
-    while (count !== 0) {
-        if (isNatural(currentNumber)) {
-            arr.push(currentNumber);
-            count--;
+    function recursion(n) {
+        if (n > 0) {
+            if (isNatural(currentNumber)) {
+                arr.push(currentNumber);
+                currentNumber++;
+                return recursion(n - 1);
+            }
+            currentNumber++;
+            return recursion(n);
+        } else {
+            return arr;
         }
-        currentNumber++;
     }
 
     function isNatural(number) {
@@ -22,7 +28,8 @@
         }
         return true;
     }
-    alert(arr);
+    alert(recursion(count));
+
 </script>
 </body>
 </html>
