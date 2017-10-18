@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+
+    var color = {
+        color : "red"
+    };
+
+    var properties = {
+        width : 5,
+        height : 8,
+        color : color
+    };
+
+    var original = {
+        properties : properties,
+        age: {
+            years: 10
+        }
+    };
+
+    var copyFunction = function makeClone(obj) {
+        var clone = {};
+        for (var prop in obj) {
+            if (obj.hasOwnProperty(prop)) {
+                if ("object"===typeof obj[prop])
+                    clone[prop] = makeClone(obj[prop]);
+                else
+                    clone[prop] = obj[prop];
+            }
+        }
+        return clone;
+    };
+
+    var copy = copyFunction(original);
+    copy.age.years = 20;
+    copy.properties.color.color = "blue";
+
+    console.log(original);
+    console.log(copy);
+
+</script>
+</body>
+</html>
