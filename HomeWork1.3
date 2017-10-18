@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+
+    var arr = [];
+    var obj1 = {};
+    var obj2 = {};
+
+    for (var i = 0; i < 100000; i++) {
+        arr[i] = Math.random().toString(36).substring(7);
+        obj1[i] = Math.random().toString(36).substring(7);
+        obj2[Math.random().toString(36).substring(9)] = Math.random().toString(36).substring(7);
+    }
+
+    console.log(arr);
+    console.log(obj1);
+    console.log(obj2);
+
+    function test(a) {
+
+        function walkIn(a) {
+            for (var key in a) a[key]++;
+        }
+
+        function walkLength(a) {
+            for (var i = 0; i < a.length; i++) a[i]++;
+        }
+
+        function bench(f) {
+            for (var i = 0; i < 100; i++) f(a);
+        }
+
+        console.time("walkLength");
+        bench(walkLength);
+        console.timeEnd("walkLength");
+
+        console.time("walkIn");
+        bench(walkIn);
+        console.timeEnd("walkIn");
+    }
+
+    test(arr);
+    test(obj1);
+    test(obj2);
+
+</script>
+</body>
+</html>
