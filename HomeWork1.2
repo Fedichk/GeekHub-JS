@@ -4,17 +4,17 @@
 <script>
 
     var color = {
-        color : "red"
+        color: "red"
     };
 
     var properties = {
-        width : 5,
-        height : 8,
-        color : color
+        width: 5,
+        height: 8,
+        color: color
     };
 
     var original = {
-        properties : properties,
+        properties: properties,
         age: {
             years: 10
         }
@@ -24,7 +24,7 @@
         var clone = {};
         for (var prop in obj) {
             if (obj.hasOwnProperty(prop)) {
-                if ("object"===typeof obj[prop])
+                if ("object" === typeof obj[prop])
                     clone[prop] = makeClone(obj[prop]);
                 else
                     clone[prop] = obj[prop];
