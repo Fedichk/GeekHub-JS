@@ -24,7 +24,7 @@
         }
 
         function walkLength(a) {
-            for (var i = 0; i < a.length; i++) a[i]++;
+            for (var i = 0; i < (a.length ? a.length : 10000); i++) a[i]++;
         }
 
         function bench(f) {
